@@ -29,15 +29,14 @@ public class HTMPictureFrameTest {
     private static byte[] labels;
     private static byte[][] images;
     private static HTMNetwork htmPicture;
+    private static String directoryName = "/pictures/packages/20x1/";
+    //private static String directoryName = "/pictures/packages/MNIST/";
 
     public static void main(String[] args) throws IOException, URISyntaxException {
-        URL resource = HTMPictureTest.class.getClassLoader().getResource("pictures/packages/20x1/train-labels.idx1-ubyte");
-        assert resource != null;
+        String path = HTMPictureTest.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
+        MNISTDatasetReader reader = new MNISTDatasetReader(path + directoryName);
 
-        File testFile = new File(resource.toURI().getPath());
-        MNISTDatasetReader reader = new MNISTDatasetReader(testFile.getParentFile().getPath());
-
-        images = reader.readData();
+        images = reader.readData(false);
         currentImage = MovieUtils.toDouble(images[0]);
         labels = reader.getLabels();
 

@@ -18,7 +18,7 @@ public class SimpleReaderTest {
         File testFile = new File(resource.toURI().getPath());
         MNISTDatasetReader reader = new MNISTDatasetReader(testFile.getParentFile().getPath());
 
-        byte[][] images = reader.readData();
+        byte[][] images = reader.readData(false);
 
         double[] currentImage = MovieUtils.toDouble(images[0]);
 

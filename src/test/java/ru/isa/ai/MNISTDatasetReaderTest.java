@@ -24,7 +24,7 @@ public class MNISTDatasetReaderTest {
         File testFile = new File(MNISTDatasetReaderTest.class.getClassLoader().getResource("train-labels-idx1-ubyte.gz").getPath());
         MNISTDatasetReader reader = new MNISTDatasetReader(testFile.getParentFile().getPath());
 
-        images = reader.readData();
+        images = reader.readData(true);
         data = reader.getLabels();
         SwingUtilities.invokeLater(MNISTFrame::new);
     }

@@ -8,6 +8,7 @@ import ru.isa.ai.utils.MovieUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * Author: Aleksandr Panov
@@ -19,11 +20,10 @@ public class HTMPictureTest {
 
     public static final int SIZE = 1000;
 
-    public static void main(String[] args) throws IOException {
-        File testFile = new File(HTMPictureTest.class.getClassLoader().getResource("train-labels-idx1-ubyte.gz").getPath());
-        MNISTDatasetReader reader = new MNISTDatasetReader(testFile.getParentFile().getPath());
+    public static void main(String[] args) throws IOException, URISyntaxException {
+        MNISTDatasetReader reader = new MNISTDatasetReader(HTMPictureTest.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());
 
-        byte[][] images = reader.readData();
+        byte[][] images = reader.readData(true);
         byte[] labels = reader.getLabels();
 
         HTMNetwork htmPicture = new HTMNetwork();

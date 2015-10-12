@@ -1,18 +1,17 @@
 package ru.isa.ai;
 
-import org.apache.commons.lang3.ArrayUtils;
 import ru.isa.ai.eik.IKNetwork;
 import ru.isa.ai.utils.MathUtils;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Arc2D;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.*;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Random;
+import java.util.TreeMap;
 
 /**
  * Author: Aleksandr Panov
